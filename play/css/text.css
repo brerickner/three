@@ -1,0 +1,10 @@
+/* DOM + CSS add content to div and use css parkeup to position absolutely at a position */
+/* above all others with a z-index */
+#info {
+	position: absolute;
+	top: 10px;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+	display:block;
+}
