@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+		</style>
+        <!-- // add css style sheet -->
+        <link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+        <h1>MEOW</h1>
+        <div id="info">Description</div>
+        
+		<script src="js/three.js"></script>
+		<script>
+			// Set up scene, camera, and renderer.
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+            
+            // Where the magic happens
+            const renderer = new THREE.WebGLRenderer();
+            
+            // For performance intensive apps, you can also give setSize smaller values, 
+            // like window.innerWidth/2 and window.innerHeight/2, which will make the app render at quarter size.
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            
+            // Add the renderer to the DOM.
+            document.body.appendChild( renderer.domElement );
+
+            // Create a cube.
+            const geometry = new THREE.BoxGeometry();
+
+            // Create a material.
+            const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+            
+            // Create a mesh with geometry and material.
+            const cube = new THREE.Mesh( geometry, material );
+            
+            // By default, when we call scene.add(), 
+            // the thing we add will be added to the coordinates (0,0,0).
+            scene.add( cube );
+
+            camera.position.z = 5;
+
+            // Render scene with a render or animate loop
+            function animate() {
+                requestAnimationFrame( animate );
+                cube.rotation.x += 0.1;
+                cube.rotation.y += 0.1; 
+                renderer.render( scene, camera );
+            }
+            animate();
+            
+		</script>
+	</body>
+</html>
